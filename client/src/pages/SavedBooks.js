@@ -14,11 +14,23 @@ import { removeBookId } from '../utils/localStorage';
 import { REMOVE_BOOK } from "../utils/mutations";
 
 const SavedBooks = () => {
-  const [userData, setUserData] = useState({});
+  const { loading, data } = useQuery(QUERY_ME);
+  const [removeBook] = useMutation(REMOVE_BOOK, {
+    update(cache) {
+      try {
+        // update me array's cache
+        const { me } = cache.readQuery({ query: QUERY_ME });
+        cache.writeQuery({
+          query: QUERY_ME,
+          data: { me: { ...me, savedBooks: [...me.savedBooks] } },
+        });
+      } catch (e) {
+        console.warn("First book deleted by user!");
+      }
+    },
+  });
 
-  // use this to determine if `useEffect()` hook needs to run again
-  const userDataLength = Object.keys(userData).length;
-  }, [userDataLength]);
+  const userData = data?.me || [];
 
   // create function that accepts the book's mongo _id value as param and deletes the book from the database
   const handleDeleteBook = async (bookId) => {
@@ -40,7 +52,7 @@ const SavedBooks = () => {
   };
 
   // if data isn't here yet, say so
-  if (!userDataLength) {
+  if (loading) {
     return <h2>LOADING...</h2>;
   }
 
