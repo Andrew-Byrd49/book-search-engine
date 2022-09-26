@@ -25,7 +25,7 @@ Using the Google Books API, you can now search for the book you NEED. You're wel
 
 Start off by cloning the repository and opening it in VSCode. In your repos root directory, open the terminal and run ``` npm i ```.
 
-Once completed, open a terminal in your repo and enter ``` npm start ``` to begin.
+Once completed, open a terminal in your repo, run ``` cd ./client/ ``` then enter ``` npm start ``` to begin.
 
 ## Screenshots 
 
