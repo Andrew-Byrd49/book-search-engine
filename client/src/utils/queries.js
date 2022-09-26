@@ -6,14 +6,15 @@ export const QUERY_ME = gql`
     _id
     username
     email
-    bookCount {
-        bookId
-        authors
-        description
-        image
-        link
-        title
-        }
+    bookCount
+    savedBooks {
+      bookId
+      title
+      authors
+      description
+      image
+      link
+    }
     }
   }
 `;
