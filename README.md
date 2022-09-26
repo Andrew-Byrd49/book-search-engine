@@ -29,7 +29,7 @@ Once completed, open a terminal in your repo, run ``` cd ./client/ ``` then ente
 
 ## Screenshots 
 
-<img width="737" alt="Screen Shot 2022-07-03 at 3 08 40 PM" src="screenshot.png">
+<img width="737" alt="Screen Shot" src="screenshot.png">
 
 ## Liscense
 
